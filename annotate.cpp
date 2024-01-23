@@ -2,6 +2,12 @@
 using namespace cv;
 using namespace std;
 
+bool drawing = false;
+int shapeType = 0;  // 0 for rectangle, 1 for circle
+Rect selectedRectangle;//strust of rectangle with width & height 
+Point2f circleCenter;//float
+int radius = 0;
+
 int main(){
     Mat image = imread("sample.jpg");
 
@@ -29,5 +35,8 @@ int main(){
             break;
         }
     }
+
+    destroyAllWindows();
+    return 0;
     
 }
