@@ -13,19 +13,8 @@ void drawShapes(Mat &image) {
     if (shapeType == 0) {
         rectangle(image, selectedRectangle, Scalar(0, 255, 0), 2);
 
-        string rectCoords = "Top_Left: (" + to_string(selectedRectangle.x) + ", " +
-        to_string(selectedRectangle.y) + ") Down_Right: (" +   
-        to_string(selectedRectangle.x + selectedRectangle.width) + ", " +
-        to_string(selectedRectangle.y + selectedRectangle.height) + ")";
-        putText(image, rectCoords, Point(10, 20), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 255, 0), 1);
-
     } else if (shapeType == 1) {
         circle(image, circleCenter, radius, Scalar(0, 0, 255), 2);
-
-        string circleCoords = "Center: (" + to_string(circleCenter.x) + ", " +
-        to_string(circleCenter.y) + ") Radius: " + to_string(radius);
-
-        putText(image, circleCoords, Point(10, 20), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 0, 255), 1);
     }
 }
 
