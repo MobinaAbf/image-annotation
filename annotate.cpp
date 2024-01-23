@@ -8,6 +8,14 @@ Rect selectedRectangle;//strust of rectangle with width & height
 Point2f circleCenter;//float
 int radius = 0;
 
+void drawShapes(Mat &image) {
+    if (shapeType == 0) {
+        rectangle(image, selectedRectangle, Scalar(0, 255, 0), 2);
+    } else if (shapeType == 1) {
+        circle(image, circleCenter, radius, Scalar(0, 0, 255), 2);
+    }
+}
+
 int main(){
     Mat image = imread("sample.jpg");
 
