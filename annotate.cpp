@@ -16,6 +16,29 @@ void drawShapes(Mat &image) {
     }
 }
 
+void mouseCallback(int event, int x, int y, int flags, void *userdata) {
+    if (event == EVENT_LBUTTONDOWN) {
+        drawing = true;
+        if (shapeType == 0) {
+            selectedRectangle = Rect(x, y, 0, 0);
+        } else if (shapeType == 1) {
+            circleCenter = Point(x, y);
+            radius = 0;
+        }
+    } else if (event == EVENT_MOUSEMOVE) {
+        if (drawing) {
+            if (shapeType == 0) {
+                selectedRectangle.width = x - selectedRectangle.x;
+                selectedRectangle.height = y - selectedRectangle.y;
+            } else if (shapeType == 1) {
+                radius = static_cast<int>(sqrt(pow(x - circleCenter.x, 2) + pow(y - circleCenter.y, 2)));
+            }
+        }
+    } else if (event == EVENT_LBUTTONUP) {
+        drawing = false;
+    }
+}
+
 int main(){
     Mat image = imread("sample.jpg");
 
